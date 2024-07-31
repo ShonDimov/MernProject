@@ -4,20 +4,21 @@ const API = axios.create({
     baseURL: '/',  // Use '/api' because of the proxy setup
 });
 
-// Functions to fetch data from server
-export const addUserData = (username, password) => API.get('/addUserData',
+// API calls to server
+export const loginRequest = (username, password) => API.get('/login',
     {
         params: {
             username: username,
             password: password,
         }
     });
-export const doesUsernameMatchPassword = (username, password) => API.get('/doesDataMatch',
+export const signupRequest = (username, password) => API.get('/signup',
     {
         params: {
             username: username,
             password: password,
         }
     });
+export const enterStoreRequest = () => API.get('/enterStore', {})
 
 export default API;

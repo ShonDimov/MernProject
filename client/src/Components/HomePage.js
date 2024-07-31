@@ -1,15 +1,26 @@
 
 import React from 'react'
 import '../App.css'
-import { addUserData, doesUsernameMatchPassword } from '../api'
+import { loginRequest, signupRequest, enterStoreRequest } from '../api'
 import { useNavigate } from 'react-router-dom'
 
 function HomePage() {
 
-    const navigate = useNavigate();
+    React.useEffect(() => {
 
-    const [username, setUsername] = React.useState('')
-    const [password, setPassword] = React.useState('')
+        enterStoreRequest()
+            .then(respond => respond.data)
+            .then(data => {
+
+                if (data.status) {
+                    navigate('/Store')
+                }
+
+            })
+
+    })
+
+    const navigate = useNavigate();
 
     const [usernameError, setUsernameError] = React.useState('')
     const [passwordError, setPasswordError] = React.useState('')
@@ -40,7 +51,7 @@ function HomePage() {
     }
 
     // Checks validation of 
-    async function login() {
+    function login() {
 
         resetErrors()
 
@@ -50,17 +61,21 @@ function HomePage() {
         let check = emptyFieldsCheck(username, password)
         if (check > 0) { return } // Failed
 
-        let res = await doesUsernameMatchPassword(username, password)
+        loginRequest(username, password)
+            .then(respond => respond.data)
+            .then(data => {
 
-        if (res.res) { // Username added succesfully
-            navigate('/Store')
-        } else { // Username already exists!
-            setGenericError('User Name Or Password Are Incorrect!')
-        }
+                if (data.status) { // Username added succesfully
+                    navigate('/Store')
+                } else { // Username already exists!
+                    setGenericError('User Name Or Password Are Incorrect!')
+                }
+
+            })
 
     }
 
-    async function signup() {
+    function signup() {
 
         resetErrors()
 
@@ -83,13 +98,17 @@ function HomePage() {
 
         if (check > 0) { return } // Failed
 
-        let res = await addUserData(username, password)
+        signupRequest(username, password)
+            .then(respond => respond.data)
+            .then(data => {
 
-        if (res) { // Username added succesfully
-            navigate('/Store')
-        } else { // Username already exists!
-            setUsernameError('User Name Is Already Exists!')
-        }
+                if (data.status) { // Username added succesfully
+                    navigate('/Store')
+                } else { // Username already exists!
+                    setUsernameError('User Name Is Already Exists!')
+                }
+
+            })
 
     }
 
