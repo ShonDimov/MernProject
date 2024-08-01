@@ -1,0 +1,41 @@
+
+.itemCardDiv {
+    background-color: darkgray;
+    width: 300px;
+    height: fit-content;
+    margin: 50px;
+    border-radius: 25px;
+    border-width: 5px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemImage {
+    width: 250px;
+    margin: 25px 0;
+}
+
+.starImage {
+    width: 50px;
+    margin: 0 2.5px;
+}
+
+.starImagesDiv {
+    text-align: center;
+    display: flex;
+}
+
+.descriptionSpan {
+    width: 250px;
+    font-size: 25px;
+    text-align: justify;
+    margin: 10px 0 25px 0;
+}
+
+.priceSpan {
+    font-size: 50px;
+    margin: 25px auto 0 25px;
+}

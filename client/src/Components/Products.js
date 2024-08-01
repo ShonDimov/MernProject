@@ -1,11 +1,54 @@
 
 import React from 'react'
 import '../styles/Products.css'
+import ItemCard from './ItemCard';
 
 function Products() {
 
     return (
-        <h1>Products</h1>
+        <div>
+
+            <div className="itemCardsDiv">
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+                <ItemCard />
+            </div>
+
+            
+
+        </div>
     )
 
 }
