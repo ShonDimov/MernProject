@@ -1,9 +1,13 @@
-import React from 'react';
-import API, { getCards } from './api';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import HomePage from './Components/HomePage';
-import Store from './Components/Store';
+import React from 'react'
+import API, { getCards } from './api'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
+import HomePage from './Components/HomePage'
+import Store from './Components/Store'
+import Products from './Components/Products'
+import Cart from './Components/Cart'
+import Profile from './Components/Profile'
+import Battle from './Components/Battle'
 
 function App() {
 
@@ -13,8 +17,13 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/Store" element={<Store />} />
+          <Route path="/HomePage" element={<HomePage />} />
+          <Route path="/Store" element={<Store />} >
+            <Route path="/Store/Products" element={<Products />} />
+            <Route path="/Store/Cart" element={<Cart />} />
+            <Route path="/Store/Profile" element={<Profile />} />
+            <Route path="/Store/Battle" element={<Battle />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

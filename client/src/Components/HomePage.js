@@ -66,7 +66,7 @@ function HomePage() {
             .then(data => {
 
                 if (data.status) { // Username added succesfully
-                    navigate('/Store')
+                    navigate('/Store/Products')
                 } else { // Username already exists!
                     setGenericError('User Name Or Password Are Incorrect!')
                 }
@@ -103,7 +103,7 @@ function HomePage() {
             .then(data => {
 
                 if (data.status) { // Username added succesfully
-                    navigate('/Store')
+                    navigate('/Store/Products')
                 } else { // Username already exists!
                     setUsernameError('User Name Is Already Exists!')
                 }
