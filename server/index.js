@@ -27,7 +27,7 @@ client.connect(uri)
     db = client.db(dbName);
     const usersCollection = db.collection('Users');
 
-    app.get('/signup', async (req, res) => {
+    app.get('/signup', async (req, res) => { // User signs up
       try {
 
         const { username, password } = req.query;
@@ -54,7 +54,7 @@ client.connect(uri)
       }
     });
 
-    app.get('/login', async (req, res) => {
+    app.get('/login', async (req, res) => { // User logs in
       try {
 
         const { username, password } = req.query;
@@ -64,7 +64,6 @@ client.connect(uri)
         const respond = { status: false }
         if (result) {
 
-          //const token = generateSessionToken(username);
           res.cookie('session', username, { httpOnly: true, secure: true });
           respond.status = true
 
@@ -77,7 +76,7 @@ client.connect(uri)
       }
     });
 
-    app.get('/enterStore', (req, res) => { // User try to login with session
+    app.get('/enterStore', (req, res) => { // User trys to login with session
 
       const token = req.cookies['session']; // Read the session token from the cookie
       const respond = { status: false }
@@ -87,6 +86,13 @@ client.connect(uri)
       }
 
       res.send(respond);
+
+    });
+
+    app.get('/logout', (req, res) => { // User logs out
+
+      res.cookie('session', '', { expires: new Date(0), httpOnly: true, secure: true });
+      res.send({ status: true });
 
     });
   

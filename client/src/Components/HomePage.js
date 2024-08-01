@@ -1,6 +1,6 @@
 
 import React from 'react'
-import '../App.css'
+import '../styles/HomePage.css'
 import { loginRequest, signupRequest, enterStoreRequest } from '../api'
 import { useNavigate } from 'react-router-dom'
 
@@ -138,45 +138,55 @@ function HomePage() {
     }
 
     return (
-        <div className="CenterDiv">
+        <div>
 
-            <h2>{isLogin ? `${greeting.prompt}, User! ${greeting.emoji}` : `New here? Make a User! 😄`}</h2>
-
-            <span>User Name</span>
-            <br />
-            {
-                usernameError && 
-                <div>
-                    <span className="ErrorUsernameSpan">{usernameError}</span>
-                    <br />
+            <header>
+                <div className="HeaderDiv">
+                    <h1>Welcome To Mern Shop! 🎉</h1>
                 </div>
-            }
-            <input id="usernameInput" type="text" />
-            <br />
-            <span>Password</span>
-            <br />
-            {
-                passwordError && 
-                <div>
-                    <span className="ErrorUsernameSpan">{passwordError}</span>
-                    <br />
-                </div>
-            }
-            <input id="passwordInput" type="text" />
-            <br />
-            {
-                genericError &&
-                <div>
-                    <span className="ErrorUsernameSpan">{genericError}</span>
-                </div>
-            }
-            <button className="HomePageButton" onClick={() => {
+            </header>
+            
+            <div className="CenterDiv">
 
-                    setIsLogin(!isLogin)
-                    resetErrors()
+                <h2>{isLogin ? `${greeting.prompt}, User! ${greeting.emoji}` : `New here? Make a User! 😄`}</h2>
 
-                } }>{isLogin ? "Sign Up" : "Login"}</button>
-            <button className="HomePageButton" onClick={isLogin ? login : signup}>Enter</button>
+                <span>User Name</span>
+                <br />
+                {
+                    usernameError && 
+                    <div>
+                        <span className="ErrorSpan">{usernameError}</span>
+                        <br />
+                    </div>
+                }
+                <input id="usernameInput" type="text" />
+                <br />
+                <span>Password</span>
+                <br />
+                {
+                    passwordError && 
+                    <div>
+                        <span className="ErrorSpan">{passwordError}</span>
+                        <br />
+                    </div>
+                }
+                <input id="passwordInput" type="text" />
+                <br />
+                {
+                    genericError &&
+                    <div>
+                        <span className="ErrorSpan">{genericError}</span>
+                    </div>
+                }
+                <button className="HomePageButton" onClick={() => {
+
+                        setIsLogin(!isLogin)
+                        resetErrors()
+
+                    } }>{isLogin ? "Sign Up" : "Login"}</button>
+                <button className="HomePageButton" onClick={isLogin ? login : signup}>Enter🛒</button>
+
+            </div>
 
         </div>
     )

@@ -20,5 +20,6 @@ export const signupRequest = (username, password) => API.get('/signup',
         }
     });
 export const enterStoreRequest = () => API.get('/enterStore', {})
+export const logoutRequest = () => API.get('/logout', {})
 
 export default API;

@@ -11,20 +11,12 @@ function App() {
 
   return (
     <>
-
-      <div className="CenterDiv">
-        <div className="HeaderDiv">
-          <h1>Welcome To Mern Shop!</h1>
-        </div>
-      </div>
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/Store" element={<Store />} />
         </Routes>
       </BrowserRouter>
-
     </>
   );
 
