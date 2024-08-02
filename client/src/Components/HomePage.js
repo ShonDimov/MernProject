@@ -62,7 +62,7 @@ function HomePage() {
         if (check > 0) { return } // Failed
 
         loginRequest(username, password)
-            .then(respond => respond.data)
+            .then(response => response.data)
             .then(data => {
 
                 if (data.status) { // Username added succesfully
@@ -99,7 +99,7 @@ function HomePage() {
         if (check > 0) { return } // Failed
 
         signupRequest(username, password)
-            .then(respond => respond.data)
+            .then(response => response.data)
             .then(data => {
 
                 if (data.status) { // Username added succesfully
@@ -150,23 +150,23 @@ function HomePage() {
 
                 <h2>{isLogin ? `${greeting.prompt}, User! ${greeting.emoji}` : `New here? Make a User! 😄`}</h2>
 
-                <span>User Name</span>
+                <span className="fieldPromptSpan">User Name</span>
                 <br />
                 {
                     usernameError && 
                     <div>
-                        <span className="ErrorSpan">{usernameError}</span>
+                        <span className="errorSpan">{usernameError}</span>
                         <br />
                     </div>
                 }
                 <input id="usernameInput" type="text" />
                 <br />
-                <span>Password</span>
+                <span className="fieldPromptSpan">Password</span>
                 <br />
                 {
                     passwordError && 
                     <div>
-                        <span className="ErrorSpan">{passwordError}</span>
+                        <span className="errorSpan">{passwordError}</span>
                         <br />
                     </div>
                 }
@@ -175,7 +175,7 @@ function HomePage() {
                 {
                     genericError &&
                     <div>
-                        <span className="ErrorSpan">{genericError}</span>
+                        <span className="errorSpan">{genericError}</span>
                     </div>
                 }
                 <button className="HomePageButton" onClick={() => {

@@ -1,53 +1,55 @@
 
 .CenterDiv {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .HeaderDiv {
-  position: relative;
-  width: 100%;
-  height: 15vh;
-  background-color: #50A0F0;
-  margin: 50px 0;
-  white-space: nowrap;
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    background-color: #50A0F0;
+    margin: 50px 0;
+    white-space: nowrap;
 }
 
 h1 {
-  font-size: 100px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
+    font-size: 100px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
 }
 
 h2 {
-  font-size: 75px;
+    font-size: 75px;
 }
 
 input {
-  margin-bottom: 10px;
-  font-size: 50px;
-  background-color: darkgray;
+    margin-bottom: 10px;
+    font-size: 50px;
+    background-color: darkgray;
 }
 
-span {
-  font-size: 50px;
-  font-weight: bold;
+.fieldPromptSpan {
+    font-size: 50px;
+    font-weight: bold;
 }
 
 .HomePageButton {
-  width: fit-content;
-  height: 100px;
-  padding: 0 50px;
-  margin: 50px 25px;
-  font-size: 50px;
-  font-weight: bold;
-  background-color: #50A0F0;
+    width: fit-content;
+    height: 100px;
+    padding: 0 50px;
+    margin: 50px 25px;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: #50A0F0;
 }
 
-.ErrorSpan {
-  color: #DD0000;
+.errorSpan {
+    font-size: 30px;
+    font-weight: bold;
+    color: #DD0000;
 }

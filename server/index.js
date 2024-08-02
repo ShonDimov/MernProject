@@ -3,6 +3,7 @@ const express = require('express');
 const { MongoClient } = require('mongodb');
 const cookieParser = require('cookie-parser');
 const session = require('express-session')
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -19,6 +20,8 @@ app.use(session({
   cookie: { secure: true }
 }))
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 const client = new MongoClient(uri, {});
 client.connect(uri)
   .then((db) => {
@@ -26,6 +29,7 @@ client.connect(uri)
     console.log('Connected to MongoDB');
     db = client.db(dbName);
     const usersCollection = db.collection('Users');
+    const productsCollection = db.collection('Products');
 
     app.get('/signup', async (req, res) => { // User signs up
       try {
@@ -38,16 +42,16 @@ client.connect(uri)
           { upsert: true }
         );
 
-        const respond = { status: false }
+        const response = { status: false }
         if (result.upsertedCount > 0) {
 
           const token = generateSessionToken(username);
           res.cookie('session', token, { httpOnly: true, secure: true });
-          respond.status = true
+          response.status = true
 
         }
 
-        res.send(respond);
+        res.send(response);
 
       } catch (error) {
         res.status(500).send({ error: 'Failed to fetch users' });
@@ -61,15 +65,15 @@ client.connect(uri)
         
         const result = await usersCollection.findOne({ Username: username, Password: password });
 
-        const respond = { status: false }
+        const response = { status: false }
         if (result) {
 
           res.cookie('session', username, { httpOnly: true, secure: true });
-          respond.status = true
+          response.status = true
 
         }
 
-        res.send(respond);
+        res.send(response);
 
       } catch (error) {
         res.status(500).send({ error: 'Failed to fetch users' });
@@ -79,13 +83,13 @@ client.connect(uri)
     app.get('/enterStore', (req, res) => { // User trys to login with session
 
       const token = req.cookies['session']; // Read the session token from the cookie
-      const respond = { status: false }
+      const response = { status: false }
 
       if (token) {
-        respond.status = true
+        response.status = true
       }
 
-      res.send(respond);
+      res.send(response);
 
     });
 
@@ -94,6 +98,13 @@ client.connect(uri)
       res.cookie('session', '', { expires: new Date(0), httpOnly: true, secure: true });
       res.send({ status: true });
 
+    });
+
+    app.get('/getCards', async (req, res) => { // Gets 10 cards from db
+
+      const data = await productsCollection.find().limit(10).toArray()
+      res.json(data);
+      
     });
   
     // Start the server

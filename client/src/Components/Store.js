@@ -27,7 +27,7 @@ function Store() {
                     <span className="storeLink" onClick={logout}>🚪Log Out</span>
                     <span className="storeLink" onClick={ () => { navigate('/Store/Products') } }>🛍️Store</span>
                     <span className="storeLink" onClick={ () => { navigate('/Store/Cart') } }>🛒My Cart</span>
-                    <span className="storeLink" onClick={ () => { navigate('/Store/Profile') } }>🧍Profile</span>
+                    <span className="storeLink" onClick={ () => { navigate('/Store/Profile') } }>🙎🏻Profile</span>
                     <span className="storeLink" onClick={ () => { navigate('/Store/Battle') } }>⚔️Battle</span>
                     
                 </div>
