@@ -1,13 +1,15 @@
 
 import React from 'react'
 import '../styles/Store.css'
-import { logoutRequest } from '../api'
+import { logoutRequest, getCoins } from '../api'
 import { useNavigate } from 'react-router-dom'
 import { Routes, Route, Outlet } from 'react-router-dom'
 
 function Store() {
 
     const navigate = useNavigate();
+
+    const [coins, setCoins] = React.useState(2)
 
     function logout() {
         
@@ -17,6 +19,12 @@ function Store() {
             })
 
     }
+
+    React.useEffect(() => {
+
+
+
+    })
 
     return (
         <div>

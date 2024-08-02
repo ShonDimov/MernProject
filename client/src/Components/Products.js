@@ -4,7 +4,7 @@ import '../styles/Products.css'
 import ProductCard from './ProductCard';
 import { getCards } from '../api'
 
-function Products() {
+function Products(props) {
 
     const [products, setProducts] = React.useState([])
 
@@ -20,6 +20,10 @@ function Products() {
 
     return (
         <div>
+
+            <div className="coinsDiv">
+                <span>🪙x{props.coins}</span>
+            </div>
 
             <div className="itemCardsDiv">
                 { products.map(product =>

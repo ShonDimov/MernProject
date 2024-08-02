@@ -3,3 +3,9 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(300px, 1fr));
 }
+
+.coinsDiv {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 25px 0 0 25px;
+}
